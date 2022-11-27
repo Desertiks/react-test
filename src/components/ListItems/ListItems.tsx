@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction, } from "react";
+import { Countrie } from "../../types/Countrie";
+import { Holidays } from "../../types/Holiday";
 import './ListItems.css';
 
-export const ListItems = ({items, selectedCode, setSelectedCode}) => {
+type Props = {
+  items: Countrie[],
+  selectedCode: string,
+  setSelectedCode: Dispatch<SetStateAction<string>>,
+}
 
-    const [holidays, setHolidays] = useState([]);
+export const ListItems: React.FC<Props> = ({items, selectedCode, setSelectedCode}) => {
+
+    const [holidays, setHolidays] = useState<string []>([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -12,7 +20,10 @@ export const ListItems = ({items, selectedCode, setSelectedCode}) => {
             setIsLoading(true);
             const response = await fetch(`https://date.nager.at/api/v3/NextPublicHolidays/${selectedCode}`);
             const dataResponse = await response.json();
-            setHolidays(dataResponse);
+            console.log(dataResponse);
+            const holidaysName = dataResponse.map((holiday: Holidays) => holiday.name);
+            console.log(holidaysName);
+            setHolidays(holidaysName);
           } catch (_) {
             alert('Fetch error');
           }
@@ -26,7 +37,7 @@ export const ListItems = ({items, selectedCode, setSelectedCode}) => {
         }
         }, [selectedCode]);
   
-    const handleSetCode = (code) => {
+    const handleSetCode = (code: string) => {
       if (code === selectedCode) {
         setSelectedCode('');
         return;
@@ -48,7 +59,7 @@ export const ListItems = ({items, selectedCode, setSelectedCode}) => {
             <ul>
                     {holidays.map((holiday, index) => (
                         <li key={index}>
-                        {holiday.name}
+                        {holiday}
                         </li>
                     ))}
             </ul>

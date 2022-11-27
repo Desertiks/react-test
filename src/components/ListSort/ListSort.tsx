@@ -1,6 +1,13 @@
-import { useEffect } from "react"
+import { useEffect, Dispatch, SetStateAction } from "react"
+import { Countrie } from "../../types/Countrie"
 
-export const ListSort = ({setVisibleData, isDesc, setIsDesc}) => {
+type Props = {
+setVisibleData: Dispatch<SetStateAction<Countrie[]>>,
+isDesc: boolean,
+setIsDesc: Dispatch<SetStateAction<boolean>>
+};
+
+export const ListSort: React.FC<Props> = ({setVisibleData, isDesc, setIsDesc}) => {
 
     const handleChangeSort = () => {
         setIsDesc((State) => !State);
