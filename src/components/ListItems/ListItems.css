@@ -13,9 +13,8 @@
 }
 
 .li-countries {
-    display: inline-block;
     cursor: pointer;
-    list-style: disc;
+    width: fit-content;
 }
 
 .li-countries:hover {

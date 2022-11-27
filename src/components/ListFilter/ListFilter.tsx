@@ -23,8 +23,8 @@ export const ListFilter: React.FC<Props> = ({items, setVisibleData, query, setQu
   
     return (
       <>
-      <label htmlFor="search">Search text</label>
-      <input value={query} onChange={handleSetQuery}/>
+      <label htmlFor="search" className="title is-5">Search text:</label>
+      <input className="input" value={query} onChange={handleSetQuery}/>
       </>
     )
   }

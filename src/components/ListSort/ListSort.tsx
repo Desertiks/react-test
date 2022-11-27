@@ -23,7 +23,7 @@ export const ListSort: React.FC<Props> = ({setVisibleData, isDesc, setIsDesc}) =
 
   
     return (
-        <button onClick={handleChangeSort}>
+        <button onClick={handleChangeSort} className="button is-primary">
         Sort button {isDesc ? '[ASC]' : '[DESC]'}
       </button>
     )

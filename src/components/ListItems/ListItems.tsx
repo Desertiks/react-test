@@ -20,9 +20,7 @@ export const ListItems: React.FC<Props> = ({items, selectedCode, setSelectedCode
             setIsLoading(true);
             const response = await fetch(`https://date.nager.at/api/v3/NextPublicHolidays/${selectedCode}`);
             const dataResponse = await response.json();
-            console.log(dataResponse);
             const holidaysName = dataResponse.map((holiday: Holidays) => holiday.name);
-            console.log(holidaysName);
             setHolidays(holidaysName);
           } catch (_) {
             alert('Fetch error');
@@ -46,6 +44,7 @@ export const ListItems: React.FC<Props> = ({items, selectedCode, setSelectedCode
     }
 
     return (
+      <div className="content">
       <ul>
       {items.map(item =>
         (<React.Fragment key={item.countryCode}>
@@ -69,5 +68,6 @@ export const ListItems: React.FC<Props> = ({items, selectedCode, setSelectedCode
         )
         )}
       </ul>
+      </div>
     )
   }

@@ -15,7 +15,7 @@ export const ResetAll: React.FC<Props> = ({setQuery, setSelectedCode, setIsDesc}
     }
 
     return (
-      <button onClick={handleResetAll}>
+      <button onClick={handleResetAll} className="button is-primary">
       Reset button
     </button>
     )
