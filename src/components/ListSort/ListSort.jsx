@@ -1,25 +1,23 @@
-import { useState } from "react"
+import { useEffect } from "react"
 
-export const ListSort = ({setVisibleData}) => {
-
-    const [isDesc, setIsDesc] = useState(false);
+export const ListSort = ({setVisibleData, isDesc, setIsDesc}) => {
 
     const handleChangeSort = () => {
         setIsDesc((State) => !State);
-        sortData();
     };
 
-    const sortData = () => {
+    useEffect(()=> {
         if (isDesc) {
-             setVisibleData((State) => ([...State].sort((a, b) => a.name.localeCompare(b.name))));
-        } else {
-            setVisibleData((State) => ([...State].sort((a, b) => b.name.localeCompare(a.name))));
-        }
-    };
+            setVisibleData((State) => ([...State].sort((a, b) => a.name.localeCompare(b.name))));
+       } else {
+           setVisibleData((State) => ([...State].sort((a, b) => b.name.localeCompare(a.name))));
+       }
+    }, [isDesc, setVisibleData])
+
   
     return (
         <button onClick={handleChangeSort}>
-        Sort button
+        Sort button {isDesc ? '[ASC]' : '[DESC]'}
       </button>
     )
   }

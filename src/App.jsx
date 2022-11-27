@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { ListFilter } from './components/ListFilter/ListFilter';
 import { ListItems } from './components/ListItems/ListItems';
 import { ListSort } from './components/ListSort/ListSort';
+import { ResetAll } from './components/ResetAll/ResetAll';
 
 // >>>>> Instructions:
 // Fork the exercises to create your own personal workspace.
@@ -32,10 +33,13 @@ import { ListSort } from './components/ListSort/ListSort';
 
 
 
+
 export const App = () => {
   const [data, setData] = useState([]);
   const [visibleData, setVisibleData] = useState([]);
-  // const [selectedCountryHolidays, setselectedCountryHolidays] = useState([]);
+  const [query, setQuery] = useState('');
+  const [selectedCode, setSelectedCode] = useState('');
+  const [isDesc, setIsDesc] = useState(true);
   
   
   useEffect(() => {
@@ -61,14 +65,28 @@ export const App = () => {
       <div className="body">
         <div className="search-area">
           <section className="search-field" >
-            <ListFilter items={data} setVisibleData={setVisibleData}/>
-            <ListSort setVisibleData={setVisibleData} data={data}/>
-            <button>
-              Reset button
-              {/* #5 Reset button */}
-            </button>
+            <ListFilter 
+            items={data} 
+            setVisibleData={setVisibleData}
+            query={query}
+            setQuery={setQuery}
+            />
+            <ListSort 
+            setVisibleData={setVisibleData} 
+            isDesc={isDesc}
+            setIsDesc={setIsDesc}
+            />
+            <ResetAll 
+            setQuery={setQuery}
+            setSelectedCode={setSelectedCode}
+            setIsDesc={setIsDesc}
+            />
           </section>
-          <ListItems items={visibleData}></ListItems>
+          <ListItems 
+          items={visibleData}
+          selectedCode={selectedCode}
+          setSelectedCode={setSelectedCode}
+          />
         </div>
         <div className="info-area">
         </div>

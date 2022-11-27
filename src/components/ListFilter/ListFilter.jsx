@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export const ListFilter = ({items, setVisibleData}) => {
-    const [query, setQuery] = useState('');
+export const ListFilter = ({items, setVisibleData, query, setQuery}) => {
   
     const handleSetQuery = (event) => {
       setQuery(event.target.value);
-      console.log(query);
     }
   
     useEffect(()=> {

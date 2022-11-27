@@ -1,0 +1,23 @@
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid lightblue;
+  border-right-color: orange;
+  animation: load 1s infinite linear;
+}
+@keyframes load {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.li-countries {
+    display: inline-block;
+    cursor: pointer;
+    list-style: disc;
+}
+
+.li-countries:hover {
+    background-color: #CDCDCD;
+}
