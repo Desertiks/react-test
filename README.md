@@ -1,3 +1,4 @@
+[DEMO](https://desertiks.github.io/react-test/)
 ## ToDo:
 - Display full list of items fethced from the API.
 - Filter fetched items based on 'Search text' input.
